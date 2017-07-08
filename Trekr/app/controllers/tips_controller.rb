@@ -1,5 +1,6 @@
 class TipsController < ApplicationController
   def create
+      @tip = Tip.new(tip_params);
   end
 
   def update
@@ -18,5 +19,10 @@ class TipsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def tip_params
+      params.require(:tip).permit(:tip)
   end
 end

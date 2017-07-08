@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :fetch_user
 
   private
-  
+
   def fetch_user
     #find the current user, their session and if it's present
     @current_user = User.find session[:user_id] if session[:user_id].present?

@@ -1,5 +1,8 @@
 class PhotosController < ApplicationController
+
+
   def create
+      @photo = Photo.new(photo_params);
   end
 
   def update
@@ -18,5 +21,10 @@ class PhotosController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def photo_params
+  params.require(:photo).permit(:image_url)
   end
 end

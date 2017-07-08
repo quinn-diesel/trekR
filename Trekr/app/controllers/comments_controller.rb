@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   def create
+      @comment = Comment.new(comment_params);
   end
 
   def update
@@ -18,5 +19,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def comment_params
+      params.require(:comment).permit(:comment)
   end
 end
