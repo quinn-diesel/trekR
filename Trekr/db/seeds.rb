@@ -108,13 +108,13 @@ w9 = Waypoint.create long: "-33.842830", lat: "151.246192"
 Comment.destroy_all
 
 ### SPIT TO MANLY ####
-c1 = Comment.create comment: "WOOOOOOOW. This is an epic walk. I especially loved the dog dressed in human clothing."
+com1 = Comment.create comment: "WOOOOOOOW. This is an epic walk. I especially loved the dog dressed in human clothing."
 
 ### NORTH HEAD CLIFFS ####
-c2 = Comment.create comment: "This walk is the reason why I love manly."
+com2 = Comment.create comment: "This walk is the reason why I love manly."
 
 ### TARONGA ZOO ####
-c3 = Comment.create comment "Taronga Zoo is the best zoo in Australia. I recommend it to any visitor coming to Sydney. Easily one of the best spots."
+com3 = Comment.create comment "Taronga Zoo is the best zoo in Australia. I recommend it to any visitor coming to Sydney. Easily one of the best spots."
 
 
 ##### RELATIONSHIP SEEDS #####
@@ -126,13 +126,13 @@ u3.hikes << h3
 
 ### User to Completions ###
 u1.completions << c1 << c2 << c3
-u2.completions << c1 << c2 << c3
-u3.completions << c1 << c2 << c3
+u2.completions << c4 << c5 << c6
+u3.completions << c7
 
 ### Hike to Completions ###
-h1.completions << c1
-h2.completions << c2
-h3.completions << c3
+h1.completions << c1 << c4
+h2.completions << c2 << c5 << c7
+h3.completions << c3 << c6
 
 ### Hike to Waypoints ###
 h1.waypoints << w1 << w2 << w3
@@ -140,9 +140,14 @@ h2.waypoints << w4 << w5 << w6
 h3.waypoints << w7 << w8 << w9
 
 ### Hike to Comments ###
-h1.commments << c1
-h2.commments << c2
-h3.commments << c3
+h1.commments << com1
+h2.commments << com2
+h3.commments << com3
+
+### User to Comments ###
+u1.commments << com1
+u2.commments << com2
+u3.commments << com3
 
 ### Waypoint to Tips ###
 w1.tips << t1
