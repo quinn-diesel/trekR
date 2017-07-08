@@ -114,7 +114,7 @@ com1 = Comment.create comment: "WOOOOOOOW. This is an epic walk. I especially lo
 com2 = Comment.create comment: "This walk is the reason why I love manly."
 
 ### TARONGA ZOO ####
-com3 = Comment.create comment "Taronga Zoo is the best zoo in Australia. I recommend it to any visitor coming to Sydney. Easily one of the best spots."
+com3 = Comment.create comment: "Taronga Zoo is the best zoo in Australia. I recommend it to any visitor coming to Sydney. Easily one of the best spots."
 
 
 ##### RELATIONSHIP SEEDS #####
@@ -140,14 +140,14 @@ h2.waypoints << w4 << w5 << w6
 h3.waypoints << w7 << w8 << w9
 
 ### Hike to Comments ###
-h1.commments << com1
-h2.commments << com2
-h3.commments << com3
+h1.comments << com1
+h2.comments << com2
+h3.comments << com3
 
 ### User to Comments ###
-u1.commments << com1
-u2.commments << com2
-u3.commments << com3
+u1.comments << com1
+u2.comments << com2
+u3.comments << com3
 
 ### Waypoint to Tips ###
 w1.tips << t1
