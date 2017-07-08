@@ -3,5 +3,5 @@ class Hike < ApplicationRecord
     has_many :completions
     has_many :waypoints
     has_many :comments
-    
+
 end
