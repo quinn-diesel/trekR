@@ -5,13 +5,16 @@ $(document).ready(function(){
 
     console.log("loaded.");
 
-     var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+window.onresize = function(event){
+    resizeDiv();
+}
 
-     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(mymap);
+function resizeDiv(){
+    vpw = $(window).width();
+    vph = $(window).height();
+    $('#mapid').css({'height':vph + 'px'});
+}
 
-    L.marker([51.5, -0.09]).addTo(mymap)
-        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-        .openPopup();
 
 
 }); // doc ready

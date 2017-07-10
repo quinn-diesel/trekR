@@ -5,7 +5,7 @@ class SessionController < ApplicationController
     if user.present? and user.authenticate params[:password]
       #success!
       session[ :user_id ] = user.id
-      redirect_to user_path(user)
+      redirect_to hikes_path
     else
       #bad credentials
       flash[ :error ] = "Incorrect email address and/or password"
