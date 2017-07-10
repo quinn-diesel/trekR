@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post   '/login' => 'session#create'
   delete '/login' => 'session#destroy'
 
+  get    '/waypoints/:hike_id' => 'hikes#hike_waypoints'
+
   resources :users
   resources :hikes
   resources :completions

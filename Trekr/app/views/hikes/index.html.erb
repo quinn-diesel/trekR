@@ -1,18 +1,5 @@
 
 
 <input type="text" placeholder="Search location">
-
-<div id="mapid"></div>
-
 <div><a href="#">User Profile</a></div>
-
-
-<script>
-var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(mymap);
-
-L.marker([51.5, -0.09]).addTo(mymap)
-   .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-   .openPopup();
-</script>
+<div id="mapid"></div>

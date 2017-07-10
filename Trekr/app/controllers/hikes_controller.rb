@@ -10,7 +10,7 @@ class HikesController < ApplicationController
   end
 
   def index
-       
+       @startLocation = Hike.first.waypoints.first
   end
 
   def show
@@ -23,6 +23,11 @@ class HikesController < ApplicationController
   end
 
   def destroy
+  end
+
+  def hike_waypoints
+      w = Waypoint.where(hike_id: params[:hike_id]);
+      render json: w
   end
 
   private
