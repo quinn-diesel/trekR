@@ -62,17 +62,17 @@ c7 = Completion.create date: "2017-05-06"
 Waypoint.destroy_all
 
 ### SPIT TO MANLY ####
-w1 = Waypoint.create long: "-33.804122,", lat: "151.246096"
-w2 = Waypoint.create long: "-33.806985", lat: "151.251374"
-w3 = Waypoint.create long: "-33.798827", lat: "151.282705"
+w1 = Waypoint.create lat: "-33.804122", long: "151.246096"
+w2 = Waypoint.create lat: "-33.806985", long: "151.251374"
+w3 = Waypoint.create lat: "-33.798827", long: "151.282705"
 ### NORTH HEAD CLIFFS ####
-w4 = Waypoint.create long: "-33.812192", lat: "151.289673"
-w5 = Waypoint.create long: "-33.823486", lat: "151.299254"
-w6 = Waypoint.create long: "-33.807094", lat: "151.307283"
+w4 = Waypoint.create lat: "-33.812192", long: "151.289673"
+w5 = Waypoint.create lat: "-33.823486", long: "151.299254"
+w6 = Waypoint.create lat: "-33.807094", long: "151.307283"
 ### TARONGA ZOO ####
-w7 = Waypoint.create long: "-33.839608", lat: "151.237016"
-w8 = Waypoint.create long: "-33.853335", lat: "151.245853"
-w9 = Waypoint.create long: "-33.842830", lat: "151.246192"
+w7 = Waypoint.create lat: "-33.839608", long: "151.237016"
+w8 = Waypoint.create lat: "-33.853335", long: "151.245853"
+w9 = Waypoint.create lat: "-33.842830", long: "151.246192"
 
 
 ###### PHOTOS ######
