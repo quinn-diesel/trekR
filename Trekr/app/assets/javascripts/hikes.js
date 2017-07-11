@@ -9,6 +9,11 @@ window.onresize = function(event){
     resizeDiv();
 }
 
+function resizeDiv(){
+    vpw = $(window).width();
+    $('#mapid').css({'width': vpw});
+}
+
 if( $('.hikes.index').length ){
   // page-specific code to run
 
@@ -51,6 +56,9 @@ if( $('.hikes.index').length ){
 
     // Try to init Scribble Maps after Leaflet is loaded
 
+
+
+
     window.scribblemaps = {
           settings: {
               baseAPI: 'leaflet',
@@ -61,21 +69,36 @@ if( $('.hikes.index').length ){
                //'https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/tiles/256/{z}/{x}/{y}@2x?access_token=<Your Mapbox Token>'
           }
       }
-      var sm = new ScribbleMap(document.getElementById('mapid'));
-    //   debugger;
-      sm.ui.styleControl(scribblemaps.ControlType.FILL_COLOR, {"display": "none"});
-    //   sm.settings.clearListener();
-    //   sm.map.addListener;
+
+    //   var sm = new ScribbleMap(document.getElementById('mapid'));
+      var sm = new ScribbleMap('mapid', {
+                searchControl: true,
+                lineSettingsControl: true,
+                mapTypeControl: true,
+                fillColorControl: false,
+                lineColorControl: false,
+                zoomControl: true,
+                tools: ["menu", "edit", "drag", "eraser", "fill",
+                        "scribble", "line",
+                        "polygon", "label", "marker", "image"],
+                defaultTool: "edit",
+                startCenter: [ -33.804122, 151.246069 ],
+                startZoom: 7,
+                // startMapType: "road",
+                disableZoom: false,
+                settings: {
+                    baseAPI: 'leaflet',
+                    accessToken: 'AIzaSyB4e1KgLbKlIWzhOiPoJcBW6v_02e6fwCg',
+                    baseLayer: 'http://mt0.google.com/vt/key=AIzaSyB4e1KgLbKlIWzhOiPoJcBW6v_02e6fwCg&lyrs=p&x={x}&y={y}&z={z}'
+                }
+            });
 
 
-
-
-
-}
-
-function resizeDiv(){
-    vpw = $(window).width();
-    $('#mapid').css({'width': vpw});
+        var coordinates = sm.map.addListener(scribblemaps.map.OVERLAY_ADDED, function(event){
+            var overlay = event.data;
+            var coords = overlay.getCoords();
+            console.log(coords);
+        });
 }
 //
 // window.scribblemaps = {
