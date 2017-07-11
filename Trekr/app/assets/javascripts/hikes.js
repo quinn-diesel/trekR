@@ -61,8 +61,8 @@ if( $('.hikes.index').length ){
                //'https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/tiles/256/{z}/{x}/{y}@2x?access_token=<Your Mapbox Token>'
           }
       }
-
       var sm = new ScribbleMap(document.getElementById('mapid'));
+      debugger;
 
 
 

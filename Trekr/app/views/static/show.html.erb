@@ -7,7 +7,7 @@
   <button><%= link_to 'Login', login_path %></button> <button> <%= link_to 'Signup', new_user_path %> </button>
 <% else %>
   <p>
-    Welcome, <%= link_to @current_user.name, user_path(@current_user) %> |
+    Welcome, <%= link_to @current_user.firstname, user_path(@current_user) %> |
     <%= link_to 'Logout', login_path, method: :delete %>
 </p>
 <% end %>
