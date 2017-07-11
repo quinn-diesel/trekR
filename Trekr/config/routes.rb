@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete '/login' => 'session#destroy'
 
   get    '/waypoints/:hike_id' => 'hikes#hike_waypoints'
+  post   '/hikes/savepoints' => 'hikes#save_waypoints'
 
   resources :users
   resources :hikes

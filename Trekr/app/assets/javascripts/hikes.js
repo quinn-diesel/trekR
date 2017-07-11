@@ -106,6 +106,10 @@ if( $('.hikes.index').length ){
 
         $('#saveHike').on('click', function(){
 
+            if($('#hikeName').val()){
+                var hikeName = $("#hikeName").val();
+                var hikeDesc = $("#hikeDesc").val();
+            }
             // Save hike path if a path has been drawn
             var overlays = sm.map.getOverlays();
 
@@ -128,6 +132,24 @@ if( $('.hikes.index').length ){
                 console.log(ajax_data);
 
                 // Make AJAX call using $.ajax()
+
+                $.ajax({
+                    url: "/hikes/savepoints",
+                    method: "POST",
+                    data: {
+                        waypoints: ajax_data,
+                        name: hikeName,
+                        description: hikeDesc
+                     },
+                     datatype: "json"
+                })
+                .done(function(res){
+                    // debugger;
+                    console.log(res);
+                })
+                .fail(function(xhr, status, error){
+                    console.log(xhr, status, error);
+                });
 
                 // Define Rails route to accept a POST to some url i.e. ""/hike/savepoints"
 
