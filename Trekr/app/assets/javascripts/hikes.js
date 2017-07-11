@@ -75,15 +75,14 @@ if( $('.hikes.index').length ){
 
     //   var sm = new ScribbleMap(document.getElementById('mapid'));
              sm = new ScribbleMap('mapid', {
-                searchControl: true,
-                lineSettingsControl: true,
+                searchControl: false,
+                lineSettingsControl: false,
                 mapTypeControl: true,
                 fillColorControl: false,
                 lineColorControl: false,
                 zoomControl: true,
-                tools: ["menu", "edit", "drag", "eraser", "fill",
-                        "scribble", "line",
-                        "polygon", "label", "marker", "image"],
+                tools: ["edit", "drag", "eraser",
+                        "scribble", "marker", "image"],
                 defaultTool: "edit",
                 startCenter: [ -33.804122, 151.246069 ],
                 startZoom: 7,
@@ -93,7 +92,7 @@ if( $('.hikes.index').length ){
                     baseAPI: 'leaflet',
                     accessToken: 'AIzaSyB4e1KgLbKlIWzhOiPoJcBW6v_02e6fwCg',
                     baseLayer: 'http://mt0.google.com/vt/key=AIzaSyB4e1KgLbKlIWzhOiPoJcBW6v_02e6fwCg&lyrs=p&x={x}&y={y}&z={z}'
-                },
+                }
 
             });
 
