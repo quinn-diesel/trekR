@@ -1,6 +1,9 @@
 
 console.log("loaded.");
 
+
+var sm;  // scribblemaps object
+
 $(document).ready(function(){
 
     console.log("loaded.");
@@ -71,7 +74,7 @@ if( $('.hikes.index').length ){
       }
 
     //   var sm = new ScribbleMap(document.getElementById('mapid'));
-      var sm = new ScribbleMap('mapid', {
+             sm = new ScribbleMap('mapid', {
                 searchControl: true,
                 lineSettingsControl: true,
                 mapTypeControl: true,
@@ -90,15 +93,59 @@ if( $('.hikes.index').length ){
                     baseAPI: 'leaflet',
                     accessToken: 'AIzaSyB4e1KgLbKlIWzhOiPoJcBW6v_02e6fwCg',
                     baseLayer: 'http://mt0.google.com/vt/key=AIzaSyB4e1KgLbKlIWzhOiPoJcBW6v_02e6fwCg&lyrs=p&x={x}&y={y}&z={z}'
-                }
+                },
+
             });
 
 
-        var coordinates = sm.map.addListener(scribblemaps.map.OVERLAY_ADDED, function(event){
-            var overlay = event.data;
-            var coords = overlay.getCoords();
-            console.log(coords);
+
+        // sm.map.addListener("overlay_added", function(event){
+        //     var overlay = event.data;
+        //     var coords = overlay.getCoords();
+        //     console.log(coords);
+        // });
+
+        $('#saveHike').on('click', function(){
+
+            // Save hike path if a path has been drawn
+            var overlays = sm.map.getOverlays();
+
+            if(overlays.length > 0){
+                // TODO: Make sure this overlay is actually a path/line ??
+                var first_path = overlays[0];
+                var path_coords = first_path.getCoords();
+
+                var ajax_data = [];
+
+                for (var i = 0; i < path_coords.length; i++) {
+                    var coord = path_coords[i];
+                    // console.log('lat:', coord.lat(), 'lng:', coord.lng());
+                    var point = {
+                      lat: coord.lat(),
+                      lng: coord.lng()
+                    };
+                    ajax_data.push( point );
+                }
+                console.log(ajax_data);
+
+                // Make AJAX call using $.ajax()
+
+                // Define Rails route to accept a POST to some url i.e. ""/hike/savepoints"
+
+                // In the action for that route, process params (try a raise "hell")
+
+                // Do an each over this array of objects and Waypoint.create for each
+
+
+
+            } // overlays.length test
+
         });
+
+
+
+
+
 }
 //
 // window.scribblemaps = {
