@@ -63,6 +63,10 @@ if( $('.hikes.index').length ){
       }
 
       var sm = new ScribbleMap(document.getElementById('mapid'));
+    //   debugger;
+      sm.ui.styleControl(scribblemaps.ControlType.FILL_COLOR, {"display": "none"});
+    //   sm.settings.clearListener();
+    //   sm.map.addListener;
 
 
 
@@ -70,9 +74,10 @@ if( $('.hikes.index').length ){
 
 }
 
-// function resizeDiv(){
-//     vpw = $(window).width();
-//     $('#mapid').css({'width': vpw});
+function resizeDiv(){
+    vpw = $(window).width();
+    $('#mapid').css({'width': vpw});
+}
 //
 // window.scribblemaps = {
 //     settings:
