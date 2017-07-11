@@ -31,28 +31,33 @@ class HikesController < ApplicationController
   end
 
   def save_waypoints
-      waypointArray = params[:waypoints]
+    waypointArray = params[:waypoints]
+    #   desc = params[:description]
+    #   puts waypointArray
     #   hike = Hike.create(hike_params)
-      desc = params[:description]
-      puts waypointArray
-
-      testies = [];
-      if params[:waypoints].present?
-          waypointArray.each do |i|
-              lat = waypointArray[i]['lat']
-              long = waypointArray[i]['lng']
-              testies.push({
-                  lat: lat,
-                  long: long
-                  })
-
-          end
+    hike = Hike.create({
+        name: params[:name],
+        description: params[:description],
+        user: @current_user
+    })
+    #   testies = []
+      binding.pry
+    if params[:waypoints].present?
+      waypointArray.each do |key, val|
+          lat =  val[:lat]  #waypointArray[i]['lat']
+          long = val[:lng]  #waypointArray[i]['lng']
+          Waypoint.create lat: lat, long: long, hike: hike
+    #   testies.push({
+        #       lat: lat,
+        #       long: long
+        #       })
       end
+    end
+
+    #   puts testies
 
 
-
-
-     render json: testies
+     render json: {status: 200, success: true, hike: hike}
 
   end
 
