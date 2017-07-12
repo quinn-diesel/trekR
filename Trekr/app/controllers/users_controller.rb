@@ -60,6 +60,6 @@ before_action :check_if_logged_in, only: [ :hike_create, :update_hikes ]
 
   private
   def user_params
-      params.require(:user).permit(:firstname, :surname, :email, :password, :password_confirmation)
+      params.require(:user).permit(:firstname, :surname, :email, :password, :password_confirmation, :location, :photo)
   end
 end
