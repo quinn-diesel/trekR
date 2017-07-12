@@ -44,7 +44,7 @@ $(document).ready(function(){
         continue;
       }
       console.log('hike:', hike);
-      var m = L.marker( [ hike.start_point.long, hike.start_point.lat   ] ).addTo(mymap)
+      var m = L.marker( [ hike.start_point.lat, hike.start_point.long   ] ).addTo(mymap)
          .bindPopup('<h2>' + hike.name + '</h2>' + hike.description + '<br><a href="/hikes/' + hike.id + '">View</a>')
          .openPopup();
 
