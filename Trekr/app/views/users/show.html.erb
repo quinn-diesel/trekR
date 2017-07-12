@@ -1,2 +1,9 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1> Hiker Details </h1>
+
+
+<p>First Name <%= @user.firstname %> </p>
+<p>Surname <%= @user.surname %> </p>
+<p>Email <%= @user.email %> </p>
+<p>Password </p>
+
+<button><%= link_to 'Create Hike', new_hike_path %> </button>
