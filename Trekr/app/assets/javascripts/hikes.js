@@ -177,6 +177,10 @@ $(document).ready(function(){
 
     } // if (new hike page)
     if( $('.hikes.show').length){
+
+        $('#backHikes').on('click', function(){
+            window.location.href="/hikes";
+        })
         var mymap = L.map('mapid').setView([-33.804122, 151.246096], 13);
 
         var googleTerrain = L.tileLayer('http://{s}.google.com/vt/key={accessToken}&lyrs=p&x={x}&y={y}&z={z}',{
