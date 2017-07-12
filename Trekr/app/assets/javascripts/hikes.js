@@ -178,6 +178,7 @@ $(document).ready(function(){
                 })
                 .done(function(res){
                     // debugger;
+                    window.location.href="/hikes";
                     console.log(res);
                 })
                 .fail(function(xhr, status, error){
