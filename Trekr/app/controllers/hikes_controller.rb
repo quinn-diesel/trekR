@@ -10,7 +10,14 @@ class HikesController < ApplicationController
   end
 
   def index
-       @startLocation = Hike.first.waypoints.first
+      #  @startLocation = Hike.first.waypoints.first
+       hikes = Hike.all
+       @hikes = []
+       hikes.each do |h|
+         w = h.waypoints.first
+         hike_data = {id: h.id, name: h.name, description: h.description, start_point: w}
+         @hikes.push hike_data
+       end
   end
 
   def show

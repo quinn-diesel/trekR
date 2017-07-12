@@ -4,6 +4,8 @@ console.log("loaded.");
 
 var sm;  // scribblemaps object
 
+var markers = [];
+
 $(document).ready(function(){
 
     console.log("loaded.");
@@ -18,11 +20,15 @@ $(document).ready(function(){
         $('#mapid').css({'width': vpw});
     }
 
+
+      // HIKES INDEX CODE //
     if( $('.hikes.index').length){
   // page-specific code to run
 
     //
-    var mymap = L.map('mapid').setView([-33.804122, 151.246096], 13);
+    var mymap = L.map('mapid'); //.setView([-33.804122, 151.246096], 13);
+
+
 
     var googleTerrain = L.tileLayer('http://{s}.google.com/vt/key={accessToken}&lyrs=p&x={x}&y={y}&z={z}',{
         maxZoom: 20,
@@ -30,10 +36,25 @@ $(document).ready(function(){
         accessToken: 'AIzaSyB4e1KgLbKlIWzhOiPoJcBW6v_02e6fwCg'
     }).addTo(mymap);
 
+    console.log('hikes', hikes);
+    // the 'hikes' array of hikes is initialised in app/view/hikes/index.html.erb
+    for (var i = 0; i < hikes.length; i++) {
+      var hike = hikes[i];
+      if(!hike.start_point) {
+        continue;
+      }
+      console.log('hike:', hike);
+      var m = L.marker( [ hike.start_point.long, hike.start_point.lat   ] ).addTo(mymap)
+         .bindPopup('<h2>' + hike.name + '</h2>' + hike.description + '<br><a href="/hikes/' + hike.id + '">View</a>')
+         .openPopup();
 
-    L.marker( [ '#{Hike.last.waypoints.first.lat}' ] ).addTo(mymap)
-       .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-       .openPopup();
+       markers.push( m );
+
+    }
+
+    var group = new L.FeatureGroup( markers );
+    mymap.fitBounds( group.getBounds() );
+
 
 
     // var points = [
