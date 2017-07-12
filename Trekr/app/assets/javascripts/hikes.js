@@ -211,17 +211,11 @@ $(document).ready(function(){
             accessToken: 'AIzaSyB4e1KgLbKlIWzhOiPoJcBW6v_02e6fwCg'
         }).addTo(mymap);
 
-        var points = [
-            [-33.804122, 151.246096],
-            [-33.806985, 151.251374],
-            [-33.798827, 151.282705]
-        ];
-
         var leafletPoints = [];
 
-        for(var i = 0; i < points.length; i++) {
-          var point = points[i];
-          var p = new L.LatLng(point[0], point[1]);
+        for(var i = 0; i < waypoints.length; i++) {
+          var waypoint = waypoints[i];
+          var p = new L.LatLng(waypoint[0], waypoint[1]);
           leafletPoints.push( p );
         }
 

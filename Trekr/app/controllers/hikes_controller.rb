@@ -21,8 +21,14 @@ class HikesController < ApplicationController
   end
 
   def show
-    #   @hike = Hike.find params["id"]
-      @waypoints = Waypoint.all
+      hike = Hike.find params["id"]
+      waypoints = hike.waypoints
+      # waypoints = Waypoints.where "hike_id" == hikeID
+      @waypoints = []
+      waypoints.each do |w|
+        waypoint = [w.lat, w.long]
+        @waypoints.push waypoint
+      end
   end
 
   def edit
