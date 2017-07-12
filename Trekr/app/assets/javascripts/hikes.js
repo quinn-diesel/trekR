@@ -203,7 +203,10 @@ $(document).ready(function(){
         $('#backHikes').on('click', function(){
             window.location.href="/hikes";
         })
-        var mymap = L.map('mapid').setView([-33.804122, 151.246096], 13);
+
+        startingWaypoint = waypoints[0];
+        console.log(Array.isArray(startingWaypoint));
+        var mymap = L.map('mapid').setView(startingWaypoint, 13);
 
         var googleTerrain = L.tileLayer('http://{s}.google.com/vt/key={accessToken}&lyrs=p&x={x}&y={y}&z={z}',{
             maxZoom: 20,
