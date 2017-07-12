@@ -28,13 +28,64 @@ $(document).ready(function(){
     //
     var mymap = L.map('mapid'); //.setView([-33.804122, 151.246096], 13);
 
-
-
     var googleTerrain = L.tileLayer('http://{s}.google.com/vt/key={accessToken}&lyrs=p&x={x}&y={y}&z={z}',{
         maxZoom: 20,
         subdomains:['mt0','mt1','mt2','mt3'],
         accessToken: 'AIzaSyB4e1KgLbKlIWzhOiPoJcBW6v_02e6fwCg'
     }).addTo(mymap);
+
+
+//=====================================================================
+//code from: http://plnkr.co/edit/YjcPKL7kB1bIByu7QJ2u?p=preview
+
+    var GoogleSearch = L.Control.extend({
+     onAdd: function() {
+       var element = document.createElement("input");
+
+       element.id = "searchBox";
+
+       return element;
+     }
+   });
+
+   (new GoogleSearch).addTo(mymap);
+
+   var input = document.getElementById("searchBox");
+
+   var searchBox = new google.maps.places.SearchBox(input);
+
+   searchBox.addListener('places_changed', function() {
+     var places = searchBox.getPlaces();
+
+     if (places.length == 0) {
+       return;
+     }
+
+     var group = L.featureGroup();
+
+     places.forEach(function(place) {
+
+       // Create a marker for each place.
+       console.log(places);
+       console.log(place.geometry.location.lat() + " / " + place.geometry.location.lng());
+       var marker = L.marker([
+         place.geometry.location.lat(),
+         place.geometry.location.lng()
+       ]);
+       group.addLayer(marker);
+     });
+
+     group.addTo(mymap);
+     mymap.fitBounds(group.getBounds());
+
+   });
+
+
+//=====================================================================
+    // var searchLayer = L.geoJson()
+    // // // //... adding data in searchLayer ...
+    // L.map('mapid', { searchControl: {layer: searchLayer} });
+
 
     console.log('hikes', hikes);
     // the 'hikes' array of hikes is initialised in app/view/hikes/index.html.erb
