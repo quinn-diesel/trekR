@@ -14,6 +14,8 @@ class HikesController < ApplicationController
   end
 
   def show
+    #   @hike = Hike.find params["id"]
+      @waypoints = Waypoint.all
   end
 
   def edit
@@ -41,12 +43,16 @@ class HikesController < ApplicationController
         user: @current_user
     })
     #   testies = []
-      binding.pry
+
     if params[:waypoints].present?
       waypointArray.each do |key, val|
           lat =  val[:lat]  #waypointArray[i]['lat']
           long = val[:lng]  #waypointArray[i]['lng']
-          Waypoint.create lat: lat, long: long, hike: hike
+          Waypoint.create({
+              lat: lat,
+              long: long,
+              hike_id: hike.id
+          })
     #   testies.push({
         #       lat: lat,
         #       long: long
