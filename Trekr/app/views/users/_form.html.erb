@@ -20,6 +20,14 @@
   <%= f.text_field :surname %>
   <br>
 
+  <%= f.label :photo %>
+  <%= f.cl_image_upload :photo %>
+  <br>
+
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+  <br>
+
   <%= f.submit %>
 
 <% end %>
