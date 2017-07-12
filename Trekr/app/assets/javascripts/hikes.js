@@ -7,7 +7,7 @@ var sm;  // scribblemaps object
 $(document).ready(function(){
 
     console.log("loaded.");
-    console.log('test object: ', '<%= @startLocation %>');
+    // console.log('test object: ', '<%= @startLocation %>');
 
     window.onresize = function(event){
         resizeDiv();
