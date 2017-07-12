@@ -21,8 +21,8 @@ $(document).ready(function(){
     }
 
 
-      // HIKES INDEX CODE //
-    if( $('.hikes.index').length){
+    /////////////////////////////////////////// HIKES INDEX CODE ///////////////////////////////////////////
+  if( $('.hikes.index').length){
   // page-specific code to run
 
     //
@@ -56,43 +56,9 @@ $(document).ready(function(){
     mymap.fitBounds( group.getBounds() );
 
 
-
-    // var points = [
-    //     [-33.804122, 151.246096],
-    //     [-33.806985, 151.251374],
-    //     [-33.798827, 151.282705]
-    // ];
-
-    // var leafletPoints = [];
-    //
-    // for(var i = 0; i < points.length; i++) {
-    //   var point = points[i];
-    //   var p = new L.LatLng(point[0], point[1]);
-    //   leafletPoints.push( p );
-    // }
-
-    // var firstpolyline = new L.Polyline(leafletPoints, {
-    //     color: 'red',
-    //     weight: 3,
-    //     opacity: 0.5,
-    //     smoothFactor: 1
-    // });
-    // firstpolyline.addTo(mymap);
-
-    // Try to init Scribble Maps after Leaflet is loaded
-
-
-
-
-
-
-
-
-
-
     }
 
-
+        ////////////////////////////////////  HIKES NEW //////////////////////////////////////////////
     if( $('.hikes.new').length){
     //
     window.scribblemaps = {
@@ -130,13 +96,7 @@ $(document).ready(function(){
             });
 
 
-
-        // sm.map.addListener("overlay_added", function(event){
-        //     var overlay = event.data;
-        //     var coords = overlay.getCoords();
-        //     console.log(coords);
-        // });
-
+         ////////////////////////////////////  SAVE HIKE  /////////////////////////////////////////
         $('#saveHike').on('click', function(){
 
             if($('#hikeName').val()){
@@ -185,18 +145,13 @@ $(document).ready(function(){
                     console.log(xhr, status, error);
                 });
 
-                // Define Rails route to accept a POST to some url i.e. ""/hike/savepoints"
-
-                // In the action for that route, process params (try a raise "hell")
-
-                // Do an each over this array of objects and Waypoint.create for each
-
-
 
             } // overlays.length test
 
         });
 
+
+        ////////////////////////////////////  HIKES SHOW /////////////////////////////////////////
     } // if (new hike page)
     if( $('.hikes.show').length){
 
